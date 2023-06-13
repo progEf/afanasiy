@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for i in ord %}
+{{ i }}
+<br>
+{% endfor %}
+<br>
+<!--
+<form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" name="upvote" value="{{ ord }}"/>
+</form>
+-->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Submit</button>
+</form>
+<a href = http://127.0.0.1:8000/up_basket>Изменить корзину</a>
+<br>
+<a href = http://127.0.0.1:8000/up_ord>Изменить заказ</a>
+
+</body>
+</html>

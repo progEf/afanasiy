@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<br>
+<br>
+
+{% if user.is_staff %}
+{% for i in all%}
+<h3>{{ i }}</h3>
+<br>
+{% endfor %}
+{% else %}
+<h1>Этот текст виден только для администратора</h1>
+{% endif %}
+</body>
+</html>

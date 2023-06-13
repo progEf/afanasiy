@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" name="update">Обновить</button>
+    <br>
+    <button type="submit" name="del">Удалить </button>
+    <br>
+    <button type="submit" name="del_all">Удалить все</button>
+
+</form>
+
+
+</body>
+</html>

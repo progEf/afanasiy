@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+{% if user.is_authenticated %}
+<form method = "post" enctype="multipart/form-data">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button type="submit"> Submit</button>
+    <a href="http://127.0.0.1:8000/add/shop">Добавить магазин</a>
+</form>
+
+{% else %}
+<a href="{% url 'login'  %}">Login</a>  | <a href="{% url 'register' %}">Register</a>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Для вас действует скидка {{ pric }} %</h2>
+{{time}}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ from_or.as_p }}
+    <button type="submit"> Submit</button>
+</form>
+<br>
+
+
+
+<br>
+<a href="http://127.0.0.1:8000/order/shop/user">Посмотреть корзину</a>
+
+
+</body>
+</html>
