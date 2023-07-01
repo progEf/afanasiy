@@ -52,6 +52,7 @@ class shops(models.Model):
 
 
 class Comapany_Cl_id_AND_shops(models.Model):
+    user_ids = models.ForeignKey(User, on_delete=models.CASCADE)
     Comapany_Cl_id = models.ForeignKey(Comapany_client_id, on_delete=models.CASCADE)
     Shops_id = models.ForeignKey(shops, on_delete=models.CASCADE)
 

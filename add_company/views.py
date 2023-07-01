@@ -37,6 +37,7 @@ def add_shop(request):
         if form_shop.is_valid():
             form_shop.save()
             data = form_shop.cleaned_data
+
             field = data['shops_name'] # Узанем у формы название компании
             us = User.objects.get(username=request.user.username) # Узнаем usera сессии     ОСТАВИТЬ
 
@@ -46,7 +47,7 @@ def add_shop(request):
             pk_value=a1.pk
 
             b = shops.objects.filter(shops_name=field).values_list('pk', flat=True)     # Узнаем pk компании
-            PIKEY  = Comapany_Cl_id_AND_shops.objects.create(Comapany_Cl_id_id=pk_value, Shops_id_id=b)  # Добавляем в табл Comapany_client_id pk usera и компании
+            PIKEY  = Comapany_Cl_id_AND_shops.objects.create(Comapany_Cl_id_id=pk_value, Shops_id_id=b, user_ids_id = a)  # Добавляем в табл Comapany_client_id pk usera и компании
             PIKEY.save()
             return HttpResponseRedirect('http://127.0.0.1:8000/')
     else:
