@@ -7,14 +7,22 @@ from afas.models import Comapany_client_id, shops, User, Comapany_Cl_id_AND_shop
 
 class User_Comp_Shop(models.Model):
     client_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    Comapany_Cl_id = models.ForeignKey(Comapany_client_id, on_delete=models.CASCADE)
+    #Comapany_Cl_id = models.ForeignKey(Comapany_client_id, on_delete=models.CASCADE)
     Shops_id = models.ForeignKey(Comapany_Cl_id_AND_shops, on_delete=models.CASCADE, null=True)
     status_procent = models.IntegerField(null=True)
+    id_rundom = models.IntegerField(null=True)
 
 
 
     def __str__(self):
-        return f'User : {self.client_id}, Company : {self.Comapany_Cl_id}, Shop : {self.Shops_id} '
+        return f'User : {self.client_id}, Shop : {self.Shops_id} '
+
+class key_User_Comp_Shop(models.Model):
+    client_id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    key_comp = models.ForeignKey(User_Comp_Shop, on_delete=models.CASCADE)
+
+
+
 
 class product_admin(models.Model):
     Unit_dimensions = [
@@ -23,13 +31,11 @@ class product_admin(models.Model):
     ]
 
     product_name = models.CharField(max_length=200)
-    el = models.CharField(max_length=200, choices=Unit_dimensions)
-    stat_time = models.DateField(null=True)
-    end_time = models.DateField( null=True)
+    el = models.CharField(max_length=200, choices=Unit_dimensions,null = True )
     price = models.IntegerField(null = True)
 
     def __str__(self):
-        return f'Название : {self.product_name}. Вид упаковки {self.el}. Начало акции {self.stat_time} Конец акции {self.end_time} Цена {self.price}'
+        return f'Название : {self.product_name}. Вид упаковки {self.el} Цена {self.price}'
 
 
 
@@ -42,15 +48,14 @@ class product_discount(models.Model):
     ]
 
     product_name = models.CharField(max_length=200)
-    el = models.CharField(max_length=200, choices=Unit_dimensions)
+    el = models.CharField(max_length=200, choices=Unit_dimensions, null=True)
     stat_time = models.DateField(null=True)
     end_time = models.DateField( null=True)
     price = models.IntegerField(null = True)
-    discount = models.IntegerField(null = True)
 
     def __str__(self):
 
-        return f'Название : {self.product_name}. Вид упаковки {self.el}. Начало акции {self.stat_time} Конец акции {self.end_time} Цена {self.price}, Скидка {self.discount}'
+        return f'Название : {self.product_name}. Вид упаковки {self.el}. Начало акции {self.stat_time} Конец акции {self.end_time} Цена {self.price}'
 
 
 
@@ -62,7 +67,7 @@ class order_products_user(models.Model):
     id_product_discont = models.ForeignKey(product_discount, on_delete=models.CASCADE, null=True)
     amount = models.IntegerField()
     sumir = models.IntegerField(null=True)
-    stat_time = models.DateField(null=True)
+    #stat_time = models.DateField(null=True)
 
     def __str__(self):
 

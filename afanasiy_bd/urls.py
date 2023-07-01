@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from manager.views import meneger_cllient, SearchResultsView
+from manager.views import meneger_cllient, SearchResultsView, imports_file
 
 from add_company.views import add_comp, add_shop
 from order.views import firma_and_order312, order_user, order, update_ord, update_basket, rog_ord
@@ -37,5 +37,6 @@ urlpatterns = [
     path('up_basket/',update_basket ),  # Корзина
     path('up_ord/', update_ord),        # Заказ rog_ord
     path('up_ord/chj/', rog_ord),  # Заказ rog_ord
+    path('ups/', imports_file)
 
 ]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if user.is_superuser %}
+
+{% block content %}
+<h1>Upload File</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="update">Upload</button>
+</form>
+<br>
+<h1>Price List</h1>
+<br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_2.as_p }}
+    <button type="submit" name="price">price_list</button>
+</form>
+
+<br>
+<h1>Price List diskont</h1>
+<br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_2.as_p }}
+    <button type="submit" name="diskont">price_diskont</button>
+</form>
+
+{% endblock %}
+{% endif %}
+
+
+</body>
+</html>
